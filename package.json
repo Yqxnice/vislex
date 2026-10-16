@@ -1,0 +1,19 @@
+{
+  "name": "vislex",
+  "private": true,
+  "packageManager": "pnpm@12.6.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "@typescript/typescript6": "^6.0.2",
+    "@vanilla-extract/css": "^1.21.3",
+    "@vanilla-extract/vite-plugin": "^5.2.6",
+    "turbo": "^2.0.0",
+    "typescript": "^7.0.2",
+    "unplugin-dts": "^1.1.2",
+    "vite": "^8.3.4"
+  }
+}

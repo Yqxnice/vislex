@@ -1,0 +1,127 @@
+/*
+ * vislex 编辑器样式：Tailwind v4 自根。
+ * - 不引入 preflight（包样式不向宿主页面注入全局 reset）；
+ * - 组件样式全部是 TSX 内的工具类，本文件只保留 Tailwind 根配置与无法工具化的残留 CSS；
+ * - 主题契约：--vislex-* 变量声明在 .vislex-root / .vislex-modal（portal 场景）上，
+ *   经 @theme inline 桥接为 vl-* 工具 token，暗色由 .dark 祖先类翻转变量值。
+ */
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* 扫描本包全部源文件（.ts/.tsx），路径相对于本 CSS 文件，宿主零配置 */
+@source './';
+
+/* 基于 class 的暗色模式开关（.dark 祖先类），与宿主约定一致 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 变量 → 工具 token 桥接（inline：工具类直接内联 var() 引用，值随 .dark 翻转） */
+@theme inline {
+  --color-vl-surface: var(--vislex-surface);
+  --color-vl-surface-muted: var(--vislex-surface-muted);
+  --color-vl-border: var(--vislex-border);
+  --color-vl-border-strong: var(--vislex-border-strong);
+  --color-vl-text: var(--vislex-text);
+  --color-vl-text-muted: var(--vislex-text-muted);
+  --color-vl-brand: var(--vislex-brand);
+  --color-vl-code-bg: var(--vislex-code-bg);
+  --radius-vl: var(--vislex-radius);
+}
+
+/* ---------- 主题变量契约 ---------- */
+
+.vislex-root {
+  --vislex-border: #e5e7eb;
+  --vislex-border-strong: #d1d5db;
+  --vislex-surface: #ffffff;
+  --vislex-surface-muted: #f9fafb;
+  --vislex-text: #1f2937;
+  --vislex-text-muted: #9ca3af;
+  --vislex-brand: #2563eb;
+  --vislex-code-bg: #f3f4f6;
+  --vislex-radius: 10px;
+}
+
+.dark .vislex-root {
+  --vislex-border: #1f2937;
+  --vislex-border-strong: #374151;
+  --vislex-surface: #030712;
+  --vislex-surface-muted: #111827;
+  --vislex-text: #f3f4f6;
+  --vislex-text-muted: #6b7280;
+  --vislex-brand: #3b82f6;
+  --vislex-code-bg: #1f2937;
+}
+
+/* 模态框经 portal 挂载到 body，脱离 .vislex-root 子树，需重新声明变量 */
+.vislex-modal {
+  --vislex-border: #e5e7eb;
+  --vislex-border-strong: #d1d5db;
+  --vislex-surface: #ffffff;
+  --vislex-surface-muted: #f9fafb;
+  --vislex-text: #1f2937;
+  --vislex-text-muted: #9ca3af;
+  --vislex-brand: #2563eb;
+  --vislex-code-bg: #f3f4f6;
+}
+
+.dark .vislex-modal {
+  --vislex-border: #1f2937;
+  --vislex-border-strong: #374151;
+  --vislex-surface: #030712;
+  --vislex-surface-muted: #111827;
+  --vislex-text: #f3f4f6;
+  --vislex-text-muted: #6b7280;
+  --vislex-brand: #3b82f6;
+  --vislex-code-bg: #1f2937;
+}
+
+/* ---------- shiki 双主题桥接 ---------- */
+/* shiki 输出颜色全部走 --shiki-light/--shiki-dark CSS 变量，.dark 祖先类切换 */
+
+.vislex-codeblock-html pre.shiki {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--shiki-light-bg, transparent);
+  color: var(--shiki-light);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.vislex-codeblock-html pre.shiki code,
+.vislex-codeblock-html pre.shiki span {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.vislex-codeblock-html pre.shiki span {
+  color: var(--shiki-light);
+}
+
+.dark .vislex-codeblock-html pre.shiki {
+  background: var(--shiki-dark-bg, transparent);
+  color: var(--shiki-dark);
+}
+
+.dark .vislex-codeblock-html pre.shiki span {
+  color: var(--shiki-dark);
+}
+
+/* ---------- Banner 子段落间距 ---------- */
+/* banner 内部段落由 Lexical 主题类控制 margin，这里压掉段距改用紧凑间距 */
+
+.vislex-banner > p {
+  margin: 0;
+}
+
+.vislex-banner > p + p {
+  margin-top: 6px;
+}
+
+/* ---------- 工具栏下拉箭头 ---------- */
+/* data-URI 背景图无法可靠表达为工具类，保留手写（其余属性已是工具类） */
+
+.vislex-tb-select-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%239ca3af' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}

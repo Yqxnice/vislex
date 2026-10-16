@@ -1,0 +1,53 @@
+{
+  "name": "@vislex/headless",
+  "version": "0.0.1",
+  "private": true,
+  "description": "vislex zero-React headless lexical layer: nodes, shared markdown transformer factories and server-side markdown API",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev:build": "vite build --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vislex/litexml": "workspace:*"
+  },
+  "peerDependencies": {
+    "@lexical/headless": "0.52.0",
+    "@lexical/link": "0.52.0",
+    "@lexical/list": "0.52.0",
+    "@lexical/markdown": "0.52.0",
+    "@lexical/rich-text": "0.52.0",
+    "@lexical/table": "0.52.0",
+    "lexical": "0.52.0"
+  },
+  "devDependencies": {
+    "@lexical/headless": "0.52.0",
+    "@lexical/link": "0.52.0",
+    "@lexical/list": "0.52.0",
+    "@lexical/markdown": "0.52.0",
+    "@lexical/rich-text": "0.52.0",
+    "@lexical/table": "0.52.0",
+    "lexical": "0.52.0",
+    "typescript": "^7.0.2",
+    "unplugin-dts": "^1.0.3",
+    "vite": "^8.3.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "@vislex/ui",
+  "version": "0.0.1",
+  "private": true,
+  "description": "UI primitives for vislex editor (Base UI wrappers)",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./style.css": "./dist/ui.css"
+  },
+  "main": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev:build": "vite build --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vislex/style-token": "workspace:*"
+  },
+  "devDependencies": {
+    "@base-ui/react": "^1.9.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vanilla-extract/css": "^1.21.2",
+    "@vanilla-extract/vite-plugin": "^5.2.6",
+    "lucide-react": "^1.54.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "typescript": "^7.0.2",
+    "unplugin-dts": "^1.0.3",
+    "vite": "^8.3.4"
+  },
+  "peerDependencies": {
+    "@base-ui/react": ">=1.9.0",
+    "lucide-react": "^1.0.0",
+    "react": ">=19",
+    "react-dom": ">=19"
+  },
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "import": "./dist/index.mjs",
+        "types": "./dist/index.d.ts"
+      },
+      "./style.css": "./dist/ui.css"
+    },
+    "main": "./dist/index.mjs",
+    "types": "./dist/index.d.ts"
+  }
+}
