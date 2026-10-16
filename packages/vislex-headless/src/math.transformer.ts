@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 数学公式 Markdown 转换器（headless / editor 共用单一实现）。
  *
  * 通过 createMathTransformers(deps) 注入当前环境注册的节点类：

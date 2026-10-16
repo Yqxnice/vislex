@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @vislex/headless — vislex 的零 React / 零 DOM 服务端词法层。
  *
  * 三块内容：

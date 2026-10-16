@@ -1,4 +1,4 @@
-﻿import { $createParagraphNode, type ElementNode, type LexicalNode } from 'lexical';
+import { $createParagraphNode, type ElementNode, type LexicalNode } from 'lexical';
 import type { MultilineElementTransformer } from '@lexical/markdown';
 import { $createCodeBlockNode, $isCodeBlockNode, CodeBlockNode, type CodeFile } from './CodeBlockNode';
 import { detectLanguageFromContent, languageFromFilename, normalizeLanguage } from './languages';

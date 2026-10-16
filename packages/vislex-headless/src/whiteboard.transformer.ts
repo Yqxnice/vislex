@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 白板 Markdown 转换器（headless / editor 共用单一实现）。
  * 通过 createWhiteboardTransformers(deps) 注入当前环境注册的节点类。
  * Markdown 格式（```whiteboard 围栏，围栏体为 {mode, scene, src, patch} 的 JSON）。

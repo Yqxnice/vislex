@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Headless Lexical Markdown 高层 API。
  *
  * 在 Node.js（或任意无 DOM 环境）操作 Lexical EditorState JSON：
